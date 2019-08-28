@@ -1,0 +1,69 @@
+<div class="container main-div col-5 justify-content-center">
+    <h5 class="h5"> Register User</h5>
+    <form [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
+        <!-- <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="number" class="form-control" id="id" formControlName="id" placeholder="Enter id">
+        </div> -->
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                placeholder="Enter first name">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                placeholder="Enter last name">
+        </div>
+
+        <div class="form-group">
+            <label for="emailId">Email Id</label>
+            <input type="email" class="form-control" id="emailId" formControlName="emailId" aria-describedby="emailHelp"
+                placeholder="Enter email id">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password"
+                placeholder="Enter password">
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNo">Mobile Number</label>
+            <input type="number" class="form-control" id="mobileNumber" formControlName="mobileNo"
+                placeholder="Enter Mobile number">
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country" formControlName="country" placeholder="Enter country">
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" formControlName="state" placeholder="Enter state">
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" formControlName="city" placeholder="Enter city">
+        </div>
+
+        <div class="form-group">
+            <label for="postalCode">Postal Code</label>
+            <input type="number" class="form-control" id="postalCode" formControlName="postalCode"
+                placeholder="Enter postal code">
+        </div>
+
+        <!--  <div class="form-group">
+        <label for="image">Upload Photo</label>
+        <img [src]="imageURL">
+        <input type="file" class="form-control" id="image" formControlName="imageURL" placeholder="upload photo">
+    </div>
+ -->
+        <button type="submit" [disabled]="!registerUserForm.valid" class="btn btn-primary buttonbottom">Submit</button>
+    </form>
+</div>

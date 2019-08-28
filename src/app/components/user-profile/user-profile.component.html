@@ -1,0 +1,18 @@
+<div *ngFor="let user of users | async">
+    <div class="card divcard">
+        <div class="card-body">
+            <h5>User Profile</h5>
+            <p class="card-text">
+                Id: {{user.id}} <br>
+                First Name: {{user.firstName}}<br>
+                Last Name: {{user.lastName}}<br>
+                Mobile No: {{user.mobileNo}}<br>
+                Email Id: {{user.emailId}}<br>
+                Country: {{user.country}}<br>
+                State: {{user.state}}<br>
+                City: {{user.city}}<br>
+                Postal Code: {{user.postalCode}}
+            </p>
+        </div>
+    </div>
+</div>
