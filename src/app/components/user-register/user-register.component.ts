@@ -20,6 +20,7 @@ export class UserRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userService.show();
     this.registerUserForm = this.formBuilder.group({
       firstName: '',
       lastName: '',

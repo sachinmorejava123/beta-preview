@@ -1,12 +1,13 @@
 import { Injectable, Input } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { from, Observable, Subject, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
+import { from, Observable, Subject, BehaviorSubject, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators'
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   })
 }
 
@@ -15,8 +16,11 @@ const httpOptions = {
 })
 export class UserService {
 
+  public visible: boolean = false;
    public userArray: User[];
    public userArray$: BehaviorSubject<User[]> = new BehaviorSubject([]);
+   public user:User;
+   public statusCode: number;
 
   constructor(private http: HttpClient) { }
 
@@ -38,4 +42,25 @@ export class UserService {
       )
   }
 
+  userLogin(user: User) {
+    return this.http.get<any>(`${environment.usersURL}/?emailId=${user.emailId}&&password=${user.password}`,{observe:'response'})
+      .pipe(
+        map(res => this.user = res.body[0])
+      )
+  }
+
+  editProfile(user: User){
+    return this.http.patch<any>(`${environment.usersURL}/${this.user.id}`, user)
+    .pipe(
+      map(res => this.user = res.body)
+    )
+  }
+
+  hide() { 
+    this.visible = false;
+   }
+
+   show() {
+      this.visible = true;
+     }
 }

@@ -12,15 +12,15 @@ import { Observable } from 'rxjs';
 export class UserProfileComponent implements OnInit {
 
   users: Observable<User[]>;
+  user: User;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-   
+   this.userService.hide();
    this.users= this.userService.userArray$;
-   this.subscribeToUserProfile();
-
-
+   this.user = this.userService.user;
+   console.log(this.user);
    this.subscribeToUserProfile();
   }
   subscribeToUserProfile(){

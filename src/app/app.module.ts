@@ -10,13 +10,19 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 import { Observable } from 'rxjs';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserHomeComponent } from './components/user-home/user-home.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegisterComponent,
     UserProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserLoginComponent,
+    UserHomeComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

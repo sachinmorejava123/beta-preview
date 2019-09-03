@@ -1,11 +1,8 @@
+<app-user-home></app-user-home>
 <div class="container main-div col-4 justify-content-center">
-    <h5 class="h5"> Register User</h5>
-    <form [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
-        <!-- <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="number" class="form-control" id="id" formControlName="id" placeholder="Enter id">
-        </div> -->
-
+    <h5 class="h5"> Edit Profile</h5>
+    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+        
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" formControlName="firstName"
@@ -16,19 +13,6 @@
             <label for="lastName">Last Name</label>
             <input type="text" class="form-control" id="lastName" formControlName="lastName"
                 placeholder="Enter last name">
-        </div>
-
-        <div class="form-group">
-            <label for="emailId">Email Id</label>
-            <input type="email" class="form-control" id="emailId" formControlName="emailId" aria-describedby="emailHelp"
-                placeholder="Enter email id">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password"
-                placeholder="Enter password">
         </div>
 
         <div class="form-group">
@@ -58,12 +42,6 @@
                 placeholder="Enter postal code">
         </div>
 
-        <!--  <div class="form-group">
-        <label for="image">Upload Photo</label>
-        <img [src]="imageURL">
-        <input type="file" class="form-control" id="image" formControlName="imageURL" placeholder="upload photo">
-    </div>
- -->
-        <button type="submit" [disabled]="!registerUserForm.valid" class="btn btn-primary buttonbottom">Submit</button>
+        <button type="submit" [disabled]="!editUserForm.valid" class="btn btn-primary buttonbottom">Save</button>
     </form>
 </div>

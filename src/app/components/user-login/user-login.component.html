@@ -1,0 +1,19 @@
+<div class=" container main-div col-4 justify-content-center">
+    <h5 class="h5">Sign In</h5>
+    <form [formGroup]="loginUserForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="emailId">Email Id</label>
+            <input type="email" id="emailId" class="form-control" formControlName="emailId" aria-describedby="emailHelp">
+            <small id="emailId" class="form-text text-muted">we'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+        </div>
+
+        <button type="submit" [disabled]="!loginUserForm.value" class="btn btn-primary buttonbottom">Sign In</button>
+    </form>
+</div>
+<div>
+</div>

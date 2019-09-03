@@ -2,7 +2,7 @@ export class User {
   push(info: User) {
     throw new Error("Method not implemented.");
   }
-    /* id: string; */
+    id: number; 
     firstName: string;
     lastName: string;
     image: string;
