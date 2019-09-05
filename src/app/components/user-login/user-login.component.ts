@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { HttpResponse, HttpResponseBase } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable, from, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-user-login',
@@ -15,8 +15,8 @@ export class UserLoginComponent implements OnInit {
 
   loginUserForm: FormGroup;
   httpResponse: HttpResponse<any>
-  res: any;
   loginMsg: string;
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,8 +25,7 @@ export class UserLoginComponent implements OnInit {
   ) { }
 
   ngOnInit() { 
-    this.userService.show();
-    this.loginUserForm = this.formBuilder.group({
+     this.loginUserForm = this.formBuilder.group({
       emailId: '',
       password: '',
     })
@@ -38,12 +37,20 @@ export class UserLoginComponent implements OnInit {
   }
 
   userLogin(user: User){
-
     this.userService.userLogin(user)
       .subscribe(
-        
-        res => (res) ? this.router.navigate(['user-home']) : this.router.navigate(['user-login'])
-      
+        res => {
+          if(res){
+          // this.isLoggedIn.next(true);
+           this.userService.updateUserStatus(true);
+           return this.router.navigate(['user-profile']);
+          }else{
+           // this.isLoggedIn.next(false);
+            this.userService.updateUserStatus(false);
+           return this.router.navigate(['user-login']);
+          }
+         // return (res) ? this.router.navigate(['user-profile']) : this.router.navigate(['user-login']);
+        }
       )
   } 
 }

@@ -19,7 +19,6 @@ export class UserEditComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.userService.hide();
     this.user = this.userService.user;
     console.log(this.user);
     this.getProfile(this.user);

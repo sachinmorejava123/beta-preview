@@ -4,6 +4,7 @@ import { from, Observable, Subject, BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,13 +17,16 @@ const httpOptions = {
 })
 export class UserService {
 
-  public visible: boolean = false;
+   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
    public userArray: User[];
    public userArray$: BehaviorSubject<User[]> = new BehaviorSubject([]);
    public user:User;
    public statusCode: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
   getUserProfile() {
       this.http.get<User[]>(`${environment.usersURL}`)
@@ -56,11 +60,16 @@ export class UserService {
     )
   }
 
-  hide() { 
-    this.visible = false;
-   }
+  getUserStatus(): Observable<any> {
+    return this.isLoggedIn.asObservable();
+  }
 
-   show() {
-      this.visible = true;
-     }
+  updateUserStatus(isLoggedIn: boolean){
+    this.isLoggedIn.next(isLoggedIn);
+  }
+
+  logout() {
+    this.isLoggedIn.next(false);
+    this.router.navigate(['user-login']);
+  }
 }

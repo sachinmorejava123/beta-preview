@@ -1,14 +1,26 @@
 .main-div {
-    border: 5px;
-    width: 500px;
-    margin-top: 10px;
-    
+   /*  width: 500px; */
+    margin-top: 50px;
+    margin-left: 500px;
 }
 
  .p {
    margin: 2px;
 }
 
-.divcard{
+.div-card{
     width: 18rem;
+}
+
+.div-body {
+    border: 2px solid gray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 10px red;
+}
+
+.h5 {
+    text-align: center;
 }

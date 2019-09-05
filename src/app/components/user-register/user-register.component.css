@@ -1,6 +1,11 @@
 .main-div{
     margin-top: 50px;
     border: 2px solid gray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 10px red;
 }
 
 .h5 {
