@@ -6,6 +6,7 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 0 10px red;
+    margin-bottom: 50px;
 }
 
 .h5 {
@@ -13,6 +14,6 @@
     text-align: center;
 }
 
-.buttonbottom {
+.button-bottom {
     margin-bottom: 20px;
 }

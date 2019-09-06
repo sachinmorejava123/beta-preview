@@ -1,15 +1,14 @@
 <div class="container main-div col-4 justify-content-center">
     <h5 class="h5"> Register User</h5>
+    <p *ngIf="isValidFormSubmitted && registerUserForm.pristine" [ngClass] = "'success'">
+        Form submitted successfully.
+    </p>
     <form [formGroup]="registerUserForm" (ngSubmit)="onSubmit()">
-        <!-- <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="number" class="form-control" id="id" formControlName="id" placeholder="Enter id">
-        </div> -->
 
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" formControlName="firstName"
-                placeholder="Enter first name">
+                placeholder="Enter first name" >
         </div>
 
         <div class="form-group">
@@ -64,6 +63,6 @@
         <input type="file" class="form-control" id="image" formControlName="imageURL" placeholder="upload photo">
     </div>
  -->
-        <button type="submit" [disabled]="!registerUserForm.valid" class="btn btn-primary buttonbottom">Submit</button>
+        <button type="submit" [disabled]="!registerUserForm.valid" class="btn btn-primary button-bottom">Submit</button>
     </form>
 </div>
