@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, from } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-register',
@@ -11,18 +12,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  isValidFormSubmitted = null;     
+  isValidFormSubmitted = null;
   registerUserForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-  ) {}
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.registerUserForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      lastName: ['', [Validators.required,  Validators.pattern('^[a-zA-Z]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       mobileNo: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       emailId: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -39,17 +41,19 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit() {
     this.isValidFormSubmitted = true;
-    if(this.registerUserForm.invalid) {
+    if (this.registerUserForm.invalid) {
       return;
     }
+
     this.isValidFormSubmitted = true;
     const user = this.registerUserForm.value;
     this.userRegister(user);
     this.registerUserForm.reset();
-    
+    this.toastr.success('Your registration successfully done');
   }
 
-  userRegister(user: User) {
-    this.userService.userRegister(user);
+    userRegister(user: User) {
+      this.userService.userRegister(user);
+    }
   }
-}
+
